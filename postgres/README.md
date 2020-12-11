@@ -7,6 +7,11 @@ List databases:
 $ \l;
 ```
 
+Create a database:
+```
+$ CREATE DATABASE [database name]
+```
+
 Use a database:
 ```
 $ \c [database name]:
@@ -22,7 +27,24 @@ Show tables(verbose):
 $ \dt+;
 ```
 
+Delete a table:
+```
+$ DROP TABLE [table name];
+```
+
+Running sql from a dump file:
+```
+$ psql < schema.sql
+```
+
 # Create a table
+General structure:
+```
+CREATE TABLE [table name] (
+	[column name] [column setting] [column setting]...[column setting],
+	[column name] [column setting]
+);
+
 Some example:
 ```
 CREATE TABLE users (
