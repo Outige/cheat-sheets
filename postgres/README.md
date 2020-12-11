@@ -44,6 +44,7 @@ CREATE TABLE [table name] (
 	[column name] [column setting] [column setting]...[column setting],
 	[column name] [column setting]
 );
+```
 
 Some example:
 ```
