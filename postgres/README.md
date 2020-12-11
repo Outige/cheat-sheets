@@ -29,7 +29,12 @@ CREATE TABLE users (
 	user_id INTEGER,
 	password VARCHAR ( 50 )
 );
+
+INSERT INTO users VALUES
+(0, 'password');
 ```
+
+
 
 Some other example:
 ```
