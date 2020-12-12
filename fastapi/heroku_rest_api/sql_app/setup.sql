@@ -1,10 +1,10 @@
 -- init & set db
 -- DROP DATABASE IF EXISTS d811fiaile1gkm;
 -- CREATE DATABASE d811fiaile1gkm;
-\c d6o4j4vds51re5;
+-- \c d6o4j4vds51re5;
 
 -- init items schema
-DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS items CASCADE;
 CREATE TABLE items (
         id SERIAL NOT NULL, 
         title VARCHAR, 
@@ -15,7 +15,7 @@ CREATE TABLE items (
 );
 
 -- init users schema
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
         id SERIAL NOT NULL,
 		email VARCHAR UNIQUE,
@@ -25,10 +25,10 @@ CREATE TABLE users (
 );
 
 --users dummy data
-INSERT INTO users VALUES (0, 'tieg@gmail.com', 'super secret password', 't');
-INSERT INTO users VALUES (1, 'troy@gmail.com', 'super secreter password', 'f');
+INSERT INTO users VALUES (1, 'tieg@gmail.com', 'super secret password', 't');
+INSERT INTO users VALUES (2, 'troy@gmail.com', 'super secreter password', 'f');
 
 --items dummy data
-INSERT INTO items VALUES (0, 'tiegs pencil', 'here lies tieg pencil', 0);
-INSERT INTO items VALUES (1, 'tiegs pencil', 'tiegs backup pencil', 0);
-INSERT INTO items VALUES (2, 'troys bag', 'this is troys bag', 1);
+INSERT INTO items VALUES (1, 'tiegs pencil', 'here lies tieg pencil', 1);
+INSERT INTO items VALUES (2, 'tiegs pencil', 'tiegs backup pencil', 1);
+INSERT INTO items VALUES (3, 'troys bag', 'this is troys bag', 2);

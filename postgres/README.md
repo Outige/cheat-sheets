@@ -3,43 +3,43 @@ This README will be used to document all things psotgres.
 # Essential commands
 
 List databases:
-```
+```sql
 $ \l;
 ```
 
 Create a database:
-```
+```sql
 $ CREATE DATABASE [database name]
 ```
 
 Use a database:
-```
+```sql
 $ \c [database name]:
 ```
 
 Show tables:
-```
+```sql
 $ \dt
 ```
 
 Show tables(verbose):
-```
+```sql
 $ \dt+;
 ```
 
 Delete a table:
-```
+```sql
 $ DROP TABLE [table name];
 ```
 
 Running sql from a dump file:
-```
+```sql
 $ psql < schema.sql
 ```
 
 # Create a table
 General structure:
-```
+```sql
 CREATE TABLE [table name] (
 	[column name] [column setting] [column setting]...[column setting],
 	[column name] [column setting]
@@ -47,7 +47,7 @@ CREATE TABLE [table name] (
 ```
 
 Some example:
-```
+```sql
 CREATE TABLE users (
 	user_id INTEGER,
 	password VARCHAR ( 50 )
@@ -60,7 +60,7 @@ INSERT INTO users VALUES
 
 
 Some other example:
-```
+```sql
 CREATE TABLE users (
 	user_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,

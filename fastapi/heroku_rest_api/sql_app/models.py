@@ -17,6 +17,9 @@ class User(Base):
 
     items = relationship("Item", back_populates="owner")
 
+    def __str__(self):
+        return '<%d, %s, %s, %r>'%(self.id, self.email, self.hashed_password, self.is_active)
+
 
 class Item(Base):
     __tablename__ = "items"

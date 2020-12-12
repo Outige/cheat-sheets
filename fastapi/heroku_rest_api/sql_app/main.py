@@ -25,6 +25,20 @@ def get_db():
     finally:
         db.close()
 
+"""Route to delete all the users
+- Just added this in so we can clean the database and repopulate it for the unit tests.
+- I don't actually like this way of doing it. We would obviously need some kind of
+unit test db when doing the real thing. Also I don't like in general that such a route
+exists.
+- Also note something else I don't like: crud.get_users is limited to 100 as default.
+Can we remove that so we can return all entries? Maybe that just doesn't scale nicely.
+- I was also unable to pass setup_file as part of the json like I can pass the other args for UserCreate for example.
+"""
+@app.get("/test/")#, response_model=schemas.User)
+def delete_user(setup_file: str = '../sql_app/setup.sql', db: Session = Depends(get_db)):
+    sqlstr = open(setup_file).read()
+    db.execute(sqlstr)
+    db.commit()
 
 @app.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -54,12 +68,7 @@ def create_item_for_user(
 ):
     return crud.create_user_item(db=db, item=item, user_id=user_id)
 
-
 @app.get("/items/", response_model=List[schemas.Item])
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
-
-@app.get("/foo/", response_model=str)
-def foo(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    return 'foo'
