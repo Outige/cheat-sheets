@@ -124,6 +124,8 @@ $ pip install -r tests/requirements.txt
 ```
 
 ## Running the tests
+The initial understanding of the test files came from the [Testing](https://fastapi.tiangolo.com/tutorial/testing/) tut in the fastapi docs.
+
 Change directory to `tests/`. Then run the unit test command:
 ```
 $ python -m unittest discover -p 'test*.py'
