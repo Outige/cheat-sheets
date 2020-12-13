@@ -35,7 +35,7 @@ Can we remove that so we can return all entries? Maybe that just doesn't scale n
 - I was also unable to pass setup_file as part of the json like I can pass the other args for UserCreate for example.
 """
 @app.get("/test/")#, response_model=schemas.User)
-def delete_user(setup_file: str = '../sql_app/setup.sql', db: Session = Depends(get_db)):
+def test_route(setup_file: str = '../sql_app/setup.sql', db: Session = Depends(get_db)):
     sqlstr = open(setup_file).read()
     db.execute(sqlstr)
     db.commit()
