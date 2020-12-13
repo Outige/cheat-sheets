@@ -46,10 +46,13 @@ class test_main(unittest.TestCase):
     def test_read_users(self):
         """This unit test mesures the expected json and expected response against those received.
         """
-        expected_json = json.loads("""[{"email": "tieg@gmail.com", "id": 1, "is_active": true, "items": [{"title": "tiegs pencil", 
-        "description": "here lies tieg pencil", "id": 1, "owner_id": 1}, {"title": "tiegs pencil", "description": "tiegs backup pencil", 
-        "id": 2, "owner_id": 1}]}, {"email": "troy@gmail.com", "id": 2, "is_active": true, "items": [{"title": "troys bag", 
-        "description": "this is troys bag", "id": 3, "owner_id": 2}]}]""")
+        expected_json = [
+            {"email": "tieg@gmail.com", "id": 1, "is_active": True, "items": [{"title": "tiegs pencil", 
+            "description": "here lies tieg pencil", "id": 1, "owner_id": 1}, {"title": "tiegs pencil", "description": "tiegs backup pencil", 
+            "id": 2, "owner_id": 1}]},
+            {"email": "troy@gmail.com", "id": 2, "is_active": True, "items": [{"title": "troys bag", 
+            "description": "this is troys bag", "id": 3, "owner_id": 2}]}
+        ]
         expected_response = 200
 
         response = client.get("/users/")
@@ -57,9 +60,9 @@ class test_main(unittest.TestCase):
         self.assertTrue(response.json() == expected_json)
     
     def test_read_user(self):
-        expected_json = json.loads("""{"email": "tieg@gmail.com", "id": 1, "is_active": true, "items": [{"title": "tiegs pencil", 
+        expected_json = {"email": "tieg@gmail.com", "id": 1, "is_active": True, "items": [{"title": "tiegs pencil", 
         "description": "here lies tieg pencil", "id": 1, "owner_id": 1}, {"title": "tiegs pencil", 
-        "description": "tiegs backup pencil", "id": 2, "owner_id": 1}]}""")
+        "description": "tiegs backup pencil", "id": 2, "owner_id": 1}]}
         expected_response = 200
 
         response = client.get("/users/1")
@@ -67,9 +70,11 @@ class test_main(unittest.TestCase):
         self.assertTrue(response.json() == expected_json)
 
     def test_read_items(self):
-        expected_json = json.loads("""[{"title": "tiegs pencil", "description": "here lies tieg pencil", "id": 1, "owner_id": 1}, 
-        {"title": "tiegs pencil", "description": "tiegs backup pencil", "id": 2, "owner_id": 1}, {"title": "troys bag", 
-        "description": "this is troys bag", "id": 3, "owner_id": 2}]""")
+        expected_json = [
+            {"title": "tiegs pencil", "description": "here lies tieg pencil", "id": 1, "owner_id": 1}, 
+            {"title": "tiegs pencil", "description": "tiegs backup pencil", "id": 2, "owner_id": 1},
+            {"title": "troys bag", "description": "this is troys bag", "id": 3, "owner_id": 2}
+        ]
         expected_response = 200
 
         response = client.get("/items/")
@@ -89,7 +94,7 @@ class test_main(unittest.TestCase):
         other tests which happen in some other order
         - We should use a sqlite db so that this process will be instant
         """
-        expected_json = json.loads("""{"email": "tony@hotmail.com", "id": 3, "is_active": true, "items": []}""")
+        expected_json = {"email": "tony@hotmail.com", "id": 3, "is_active": True, "items": []}
         expected_status_code = 200
         response = client.post(
             "/users/",
@@ -107,7 +112,7 @@ class test_main(unittest.TestCase):
         This is likely due to the mechanism of adding in a user with the route sets the index. So
         now we just add the dummy data with the create tests
         """
-        expected_json = json.loads("""{"title": "soda", "description": "bicarbonated beverage", "id": 4, "owner_id": 1}""")
+        expected_json = {"title": "soda", "description": "bicarbonated beverage", "id": 4, "owner_id": 1}
         expected_status_code = 200
         response = client.post(
             "/users/1/items/",
