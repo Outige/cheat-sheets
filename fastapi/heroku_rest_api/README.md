@@ -131,6 +131,12 @@ Change directory to `tests/`. Then run the unit test command:
 $ python -m unittest discover -p 'test*.py'
 ```
 
+# Hosting on heroku
+* copied all the code over to new repo
+* coppied requirements + gunicorn + uvicorn
+* made a procfile
+* pushed but failed
+
 # caviots
 * Still need to add doc strings
 * Would like unit tests to run with sqlite db. Can't get sqlite to work
