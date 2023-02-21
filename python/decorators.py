@@ -1,5 +1,16 @@
 from functools import wraps
 
+class ClassDecorator:
+    def __init__(self, func):
+        self.func = func
+
+    def __call__(self, *args):
+        print(1, args)
+        result = self.func(*args)
+        print(ressult)
+        print(4)
+        return result
+
 def decorator(function):
     @wraps(function) # Required to get the correct __name__
     def wrapper(*args, **kwargs):
@@ -30,6 +41,10 @@ def decorated_by_single_decorator(method_argument):
     print(method_argument)
     return 2
 
+@ClassDecorator
+def foo(bar):
+    return 7
+
 if __name__ == '__main__':
     print('decorated_by_decorator_factory:')
     ressult = decorated_by_decorator_factory(method_argument='method_argument')
@@ -40,3 +55,6 @@ if __name__ == '__main__':
     result = decorated_by_single_decorator(method_argument=2)
     print(f'return value: {ressult}')
     print(decorated_by_single_decorator.__name__)
+
+
+    print(foo('bar'))
